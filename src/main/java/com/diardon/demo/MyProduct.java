@@ -7,19 +7,19 @@ import jakarta.persistence.Id;
 
 // Dominio (Lógica de negocio)
 @Entity
-public class Producto
+public class MyProduct
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // ID autogenerado
 	private Long id;
-	private String nombre;
-	private double precio;
+	private String name;
+	private double price;
 
-	public Producto(Long id, String nombre, double precio)
+	public MyProduct(Long id, String name, double price)
 	{
 		this.id = id;
-		this.nombre = nombre;
-		this.precio = precio;
+		this.name = name;
+		this.price = price;
 	}
 	public void setId(Long id)
 	{
@@ -29,22 +29,22 @@ public class Producto
 	{
 		return id;
 	}
-	public void setNombre(String nombre)
+	public void setName(String nombre)
 	{
-		this.nombre = nombre;
+		this.name = nombre;
 	}
-	public String getNombre()
+	public String getName()
 	{
-		return nombre;
-	}
-
-	public void setPrecio(double precio)
-	{
-		this.precio = precio;
+		return name;
 	}
 
-	public double getPrecio()
+	public void setPrice(double precio)
 	{
-		return precio;
+		this.price = precio;
+	}
+
+	public double getPrice()
+	{
+		return price;
 	}
 }

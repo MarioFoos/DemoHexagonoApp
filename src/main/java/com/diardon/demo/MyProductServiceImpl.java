@@ -5,22 +5,22 @@ import org.springframework.stereotype.Service;
 
 // Implementación de Servicio (Caso de Uso)
 @Service
-public class ProductoServiceImpl implements ProductoService
+public class MyProductServiceImpl implements MyProductServicePort
 {
-	private final ProductoRepositorio productoRepositorio;
+	private final MyProductRepositoryPort productoRepositorio;
 
 	@Autowired
-	public ProductoServiceImpl(ProductoRepositorio productoRepositorio)
+	public MyProductServiceImpl(MyProductRepositoryPort productoRepositorio)
 	{
 		this.productoRepositorio = productoRepositorio;
 	}
 	@Override
-	public Producto obtenerProductoPorId(Long id)
+	public MyProduct getProductById(Long id)
 	{
 		return productoRepositorio.findById(id).orElseThrow(() -> new RuntimeException("Producto no encontrado"));
 	}
 	@Override
-	public void guardarProducto(Producto producto)
+	public void saveProduct(MyProduct producto)
 	{
 		productoRepositorio.save(producto);
 	}

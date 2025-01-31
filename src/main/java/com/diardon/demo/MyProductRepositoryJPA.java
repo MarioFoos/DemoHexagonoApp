@@ -6,23 +6,24 @@ import org.springframework.stereotype.Repository;
 
 // Adaptador de Persistencia (Base de datos con JPA)
 @Repository
-public class ProductoRepositorioJPA implements ProductoRepositorio
+public class MyProductRepositoryJPA implements MyProductRepositoryPort
 {
-	private final ProductoJpaRepository jpaRepository;
+	private final MyProductJpaRepositoryPort jpaRepository;
 
-	public ProductoRepositorioJPA(ProductoJpaRepository jpaRepository){
+	public MyProductRepositoryJPA(MyProductJpaRepositoryPort jpaRepository){
 		this.jpaRepository = jpaRepository;
 	}
 
 	@Override
-	public Optional<Producto> findById(Long id)
+	public Optional<MyProduct> findById(Long id)
 	{
 		return jpaRepository.findById(id);
 	}
 
 	@Override
-	public void save(Producto producto)
+	public void save(MyProduct producto)
 	{
 		jpaRepository.save(producto);
 	}
 }
+

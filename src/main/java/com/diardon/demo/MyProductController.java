@@ -13,26 +13,26 @@ import org.springframework.web.bind.annotation.RestController;
 // Adaptador de Entrada (Controlador REST)
 @RestController
 @RequestMapping("/productos")
-public class ProductoController
+public class MyProductController
 {
-	private final ProductoService productoService;
+	private final MyProductServicePort productServicePort;
 
 	@Autowired
-	public ProductoController(ProductoService productoService)
+	public MyProductController(MyProductServicePort productoService)
 	{
-		this.productoService = productoService;
+		this.productServicePort = productoService;
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Producto> obtenerProducto(@PathVariable Long id)
+	public ResponseEntity<MyProduct> getProduct(@PathVariable Long id)
 	{
-		return ResponseEntity.ok(productoService.obtenerProductoPorId(id));
+		return ResponseEntity.ok(productServicePort.getProductById(id));
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> guardarProducto(@RequestBody Producto producto)
+	public ResponseEntity<Void> saveProduct(@RequestBody MyProduct producto)
 	{
-		productoService.guardarProducto(producto);
+		productServicePort.saveProduct(producto);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 }
